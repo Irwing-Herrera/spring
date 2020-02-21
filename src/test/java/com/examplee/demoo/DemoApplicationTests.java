@@ -25,9 +25,9 @@ public class DemoApplicationTests {
 	@Test
 	public void crearUsuarioTest() {
 		Usuario usuario = new Usuario();
-		usuario.setId(4);
-		usuario.setNombre("sasasasa");
-		usuario.setClavev(encoder.encode("123"));
+		usuario.setId(5);
+		usuario.setNombre("Irwing");
+		usuario.setClavev(encoder.encode("1234"));
 
 		Usuario retorno = iUsuarioRepo.save(usuario);
 		assertTrue(retorno.getClavev().equalsIgnoreCase(usuario.getClavev()));
