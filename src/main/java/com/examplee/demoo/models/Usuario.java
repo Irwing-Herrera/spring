@@ -18,8 +18,8 @@ public class Usuario {
     @Column(name = "nombre", length = 10)
     public String nombre;
  
-    @Column(name = "clavev", length = 255)
-    public String clavev;
+    @Column(name = "clave", length = 255)
+    public String clave;
 
     public int getId() {
         return id;
@@ -37,12 +37,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getClavev() {
-        return clavev;
+    public String getClave() {
+        return clave;
     }
 
-    public void setClavev(String clavev) {
-        this.clavev = clavev;
+    public void setClave(String clavev) {
+        this.clave = clavev;
     }
     
 }

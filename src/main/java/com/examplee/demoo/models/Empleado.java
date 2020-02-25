@@ -1,10 +1,9 @@
 package com.examplee.demoo.models;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,7 +12,7 @@ import javax.persistence.Table;
 public class Empleado {
     
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer empleadoid;
  
     @Column(name = "nombre", length = 255)
@@ -21,12 +20,6 @@ public class Empleado {
  
     @Column(name = "apellido", length = 255)
     public String apellido;
- 
-    @Column(name = "fecha_nac")
-    public Date fecha_nac;
-
-    @Column(name = "extension")
-    public Integer extension;
 
     @Column(name = "reporta_a")
     public Integer reporta_a;

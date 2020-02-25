@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -19,18 +19,19 @@ public class DemoApplicationTests {
 	@Autowired
 	private IUsuarioRepo iUsuarioRepo;
 
-	@Autowired
-	private BCryptPasswordEncoder encoder;
+	// @Autowired
+	// private BCryptPasswordEncoder encoder;
 
 	@Test
 	public void crearUsuarioTest() {
 		Usuario usuario = new Usuario();
-		usuario.setId(4);
-		usuario.setNombre("sasasasa");
-		usuario.setClavev(encoder.encode("123"));
+		usuario.setId(1);
+		usuario.setNombre("Irwing");
+		// usuario.setClave(encoder.encode("1234"));
+		usuario.setClave("1234");
 
 		Usuario retorno = iUsuarioRepo.save(usuario);
-		assertTrue(retorno.getClavev().equalsIgnoreCase(usuario.getClavev()));
+		assertTrue(retorno.getClave().equalsIgnoreCase(usuario.getClave()));
 	}
 
 }
