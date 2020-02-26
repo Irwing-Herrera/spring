@@ -18,10 +18,6 @@ public class UserDetailsServiceImplen implements UserDetailsService {
     @Autowired
     private ApplicationUserRepository applicationUserRepository;
 
-    public UserDetailsServiceImplen(ApplicationUserRepository applicationUserRepository) {
-        this.applicationUserRepository = applicationUserRepository;
-    }
-
     // Cuando un usuario intenta autenticarse, este método recibe el nombre de usuario, 
     // busca en la base de datos un registro que lo contenga y (si se encuentra) devuelve una 
     // instancia de User. 

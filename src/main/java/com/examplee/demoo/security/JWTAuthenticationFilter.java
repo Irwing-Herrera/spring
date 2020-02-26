@@ -3,9 +3,9 @@ package com.examplee.demoo.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.examplee.demoo.models.ApplicationUser;
+import com.examplee.demoo.services.UserDetailsServiceImplen;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,11 +28,12 @@ import static com.examplee.demoo.security.SecurityConstants.HEADER_STRING;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    @Autowired
     private AuthenticationManager authenticationManager;
+    private UserDetailsServiceImplen userDetailsServiceImplen;
 
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+    public JWTAuthenticationFilter(AuthenticationManager authenticationManager, UserDetailsServiceImplen userDetailsServiceImplen) {
         this.authenticationManager = authenticationManager;
+        this.userDetailsServiceImplen = userDetailsServiceImplen;
     }
 
     // analizamos las credenciales del usuario y las emitimos al AuthenticationManager
@@ -59,5 +60,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
 
         System.out.println(token);
+        userDetailsServiceImplen.setToken(((User) auth.getPrincipal()).getUsername(), token);
     }
 }
