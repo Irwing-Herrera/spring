@@ -16,6 +16,8 @@ import static com.examplee.demoo.security.SecurityConstants.SIGN_UP_URL;
 
 import com.examplee.demoo.services.UserDetailsServiceImplen;;
 
+// Configurar Filtros
+// aprovechar la configuración de seguridad web predeterminada proporcionada por Spring Security 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
     

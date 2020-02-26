@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import static com.examplee.demoo.security.SecurityConstants.HEADER_STRING;
 
+// filtro responsable de la autorización del usuario
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
     public JWTAuthorizationFilter(AuthenticationManager authManager) {
