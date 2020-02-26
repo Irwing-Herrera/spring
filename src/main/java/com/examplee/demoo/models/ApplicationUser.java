@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "login", schema = "public")
+@Table(name = "login", schema = "task")
 public class ApplicationUser {
 
     @Id
@@ -20,6 +20,9 @@ public class ApplicationUser {
 
     @Column(name = "password", length = 255)
     private String password;
+
+    @Column(name = "token", length = 255)
+    private String token;
 
     public long getId() {
         return id;
@@ -39,5 +42,13 @@ public class ApplicationUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

@@ -3,6 +3,7 @@ package com.examplee.demoo.services;
 import com.examplee.demoo.models.ApplicationUser;
 import com.examplee.demoo.repositories.ApplicationUserRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +14,8 @@ import static java.util.Collections.emptyList;
 
 @Service
 public class UserDetailsServiceImplen implements UserDetailsService {
+
+    @Autowired
     private ApplicationUserRepository applicationUserRepository;
 
     public UserDetailsServiceImplen(ApplicationUserRepository applicationUserRepository) {
@@ -29,5 +32,11 @@ public class UserDetailsServiceImplen implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
         return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
+    }
+
+    public void setToken(String username, String token) {
+        ApplicationUser user = applicationUserRepository.findByUsername(username);
+        user.setToken(token);
+        applicationUserRepository.save(user);
     }
 }
